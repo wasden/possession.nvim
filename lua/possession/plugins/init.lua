@@ -8,6 +8,7 @@ local plugins = {
     'delete_hidden_buffers',
     'nvim_tree',
     'tabby',
+    'in_session_buffers_only',
     'delete_buffers',
 }
 

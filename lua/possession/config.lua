@@ -55,6 +55,7 @@ local function defaults()
             nvim_tree = true,
             tabby = true,
             delete_buffers = false,
+            in_session_buffers_only = false,
         },
     }
 end

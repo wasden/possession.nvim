@@ -93,6 +93,7 @@ function M.save(name, opts)
             -- Update link pointing to last session
             M.update_last_session(path)
             M.session_name = name
+            M.save_way = "normal"
 
             utils.info('Saved as "%s"', short)
         else
@@ -121,6 +122,7 @@ function M.autosave()
     if M.session_name then
         if utils.as_function(config.autosave.current)(M.session_name) then
             utils.debug('Auto-saving session "%s"', M.session_name)
+            M.save_way = "autosave"
             M.save(M.session_name, { no_confirm = true })
         end
     elseif utils.as_function(config.autosave.tmp)() then
@@ -135,6 +137,7 @@ function M.autosave()
         end
 
         utils.debug('Auto-saving tmp session as "%s"', config.autosave.tmp_name)
+        M.save_way = "tmp"
         M.save(config.autosave.tmp_name, { no_confirm = true })
     end
 end
